@@ -10,7 +10,6 @@ import sys
 from indicnlp.morph import unsupervised_morph 
 from indicnlp import common
 from indicnlp.tokenize import indic_tokenize 
-import subprocess
 
 w=int(sys.argv[2])
 
@@ -18,7 +17,7 @@ if(sys.argv[1]=='1'):
 	m='Morph2Vec'
 else:
 	m='Word2Vec'
-if(not os.path.exists("LWindow/"+m+str(w))):
+if(not os.path.exists("embedding/"+m+str(w))):
 	print("\t\t     creating "+m+" vectors for Tamil")
 	if(not os.path.exists(m+".TA")):
 		with open("input", "r") as f:
@@ -54,12 +53,13 @@ if(not os.path.exists("LWindow/"+m+str(w))):
 	twv=filter(None,twv)
 	print("     Input ready for "+m+" algorithm, Starting...")
 	modeltam = wv.Word2Vec(twv, size=100, window=w, workers=1, batch_words=25, min_count=1)
-	modeltam.save("LWindow/"+m+str(w))
+	modeltam.save("embedding/"+m+str(w))
 
 	print("     "+m+" model created and saved successfully!")
 
 else:        
-	subprocess.call("eval.py")
+	os.system("eval.py "+str(w))
+
 '''
     	modeltam = wv.Word2Vec.load("Same Window/"+m)
 	#modeltam = wv.Doc2Vec.load("embedding/"+m)

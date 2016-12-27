@@ -3,8 +3,14 @@ from gensim.models import Word2Vec as wv
 import tsne
 import numpy as np
 import pylab
+import sys
 
-modeltam = wv.load("../Same Window/Word2Vec")
+if(sys.argv[1]=='1'):
+	m='Morph2Vec'
+else:
+	m='Word2Vec'
+
+modeltam = wv.load("../embedding/"+m+sys.argv[2])
 X2 = tsne.bh_sne(np.array(modeltam.syn0[:200,:].tolist()))
 Labels =  modeltam.index2word[:200]
 print type(Labels[0])

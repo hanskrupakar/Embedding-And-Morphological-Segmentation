@@ -1,4 +1,4 @@
-with open('Morph2Vec.TA', 'r+') as f:
+with open('input', 'r+') as f:
 	tam = f.read()
 	f.seek(0)
 	f.write(tam * 20)

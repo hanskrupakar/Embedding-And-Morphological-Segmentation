@@ -6,8 +6,8 @@ from indicnlp.tokenize import indic_tokenize
 import numpy as np
 import sys
 
-wordtovec = wv.Word2Vec.load("LWindow/Word2Vec"+str(sys.argv[1]))
-morphtovec = wv.Word2Vec.load("LWindow/Morph2Vec"+str(sys.argv[1]))
+wordtovec = wv.Word2Vec.load("embedding/Word2Vec"+str(sys.argv[1]))
+morphtovec = wv.Word2Vec.load("embedding/Morph2Vec"+str(sys.argv[1]))
 
 lhs1 = unicode('பில்லியன்கள்','utf-8')
 lhs2 = unicode('பல','utf-8')
